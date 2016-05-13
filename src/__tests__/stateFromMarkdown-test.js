@@ -5,13 +5,31 @@ import stateFromMarkdown from '../stateFromMarkdown';
 import {convertToRaw} from 'draft-js';
 
 describe('stateFromMarkdown', () => {
-  let markdown = 'Hello World';
   it('should create content state', () => {
+    let markdown = 'Hello World';
     let contentState = stateFromMarkdown(markdown);
     let rawContentState = convertToRaw(contentState);
     let blocks = removeKeys(rawContentState.blocks);
     expect(blocks).toEqual(
       [{text: 'Hello World', type: 'unstyled', depth: 0, inlineStyleRanges: [], entityRanges: []}]
+    );
+  });
+
+  it('should create content state from markdown link', () => {
+    let markdown = '[""](a.jpg)';
+    let contentState = stateFromMarkdown(markdown);
+    let rawContentState = convertToRaw(contentState);
+    expect(rawContentState.entityMap).toEqual(
+      {"0":{"type":"LINK","mutability":"MUTABLE","data":{"url":"a.jpg"}}}
+    );
+  });
+
+  it('should create content state from markdown image', () => {
+    let markdown = '![""](a.jpg)';
+    let contentState = stateFromMarkdown(markdown);
+    let rawContentState = convertToRaw(contentState);
+    expect(rawContentState.entityMap).toEqual(
+      {"0":{"type":"IMAGE","mutability":"MUTABLE","data":{"src":"a.jpg","alt":""}}}
     );
   });
 });
