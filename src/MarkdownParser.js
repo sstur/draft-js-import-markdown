@@ -862,7 +862,7 @@ const MarkdownParser = {
     if (options.getAST) {
       return new ElementNode('body', [], [fragment]);
     } else {
-      return fragment.toString(this.options.xhtml);
+      return fragment.toString(options.xhtml);
     }
   },
 };

@@ -12,7 +12,7 @@
     "test-src": "mocha src/__tests__/*.js src/**/__tests__/*.js"
   },
   "dependencies": {
-    "draft-js-import-element": "^0.1.12",
+    "draft-js-import-element": "git+https://github.com/KubaZ/draft-js-import-element.git#feature/image-support",
     "synthetic-dom": "^0.1.4"
   },
   "peerDependencies": {

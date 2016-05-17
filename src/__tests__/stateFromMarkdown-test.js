@@ -16,20 +16,20 @@ describe('stateFromMarkdown', () => {
   });
 
   it('should create content state from markdown link', () => {
-    let markdown = '[""](a.jpg)';
+    let markdown = '[test](a.jpg)';
     let contentState = stateFromMarkdown(markdown);
     let rawContentState = convertToRaw(contentState);
     expect(rawContentState.entityMap).toEqual(
-      {"0":{"type":"LINK","mutability":"MUTABLE","data":{"url":"a.jpg"}}}
+      {0: {type: 'LINK', mutability: 'MUTABLE', data: {url: 'a.jpg'}}}
     );
   });
 
   it('should create content state from markdown image', () => {
-    let markdown = '![""](a.jpg)';
+    let markdown = '![test](a.jpg)';
     let contentState = stateFromMarkdown(markdown);
     let rawContentState = convertToRaw(contentState);
     expect(rawContentState.entityMap).toEqual(
-      {"0":{"type":"IMAGE","mutability":"MUTABLE","data":{"src":"a.jpg","alt":""}}}
+      {0: {type: 'IMAGE', mutability: 'MUTABLE', data: {src: 'a.jpg', alt: 'test'}}}
     );
   });
 });
