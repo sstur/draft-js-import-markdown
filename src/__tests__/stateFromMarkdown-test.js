@@ -27,24 +27,13 @@ describe('stateFromMarkdown', () => {
     expect(rawContentState.entityMap).toEqual(expectedEntitiesMap);
   });
 
-  it('should create content state from markdown quote', () => {
+  it('should create content state from markdown code block', () => {
     let markdown = '`test`';
     let contentState = stateFromMarkdown(markdown);
     let rawContentState = convertToRaw(contentState);
     let blocks = removeKeys(rawContentState.blocks);
     expect(blocks).toEqual(
       [{text: 'test', type: 'unstyled', depth: 0, inlineStyleRanges: [{offset: 0, length: 4, style: 'CODE'}], entityRanges: []}]
-    );
-  });
-
-  it('should create content state from markdown code', () => {
-    let markdown = '> test';
-    let contentState = stateFromMarkdown(markdown);
-    console.log(contentState);
-    let rawContentState = convertToRaw(contentState);
-    let blocks = removeKeys(rawContentState.blocks);
-    expect(blocks).toEqual(
-      [{text: 'test', type: 'blockquote', depth: 0, inlineStyleRanges: [], entityRanges: []}]
     );
   });
 
