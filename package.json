@@ -1,6 +1,6 @@
 {
   "name": "draft-js-import-markdown",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "DraftJS: Import Markdown to ContentState",
   "main": "lib/main.js",
   "scripts": {
@@ -12,8 +12,9 @@
     "test-src": "mocha src/__tests__/*.js src/**/__tests__/*.js"
   },
   "dependencies": {
-    "draft-js-import-element": "^0.1.12",
-    "synthetic-dom": "^0.1.4"
+    "draft-js-import-element": "^0.1.13",
+    "remark": "^4.2.2",
+    "remark-html": "^3.0.0"
   },
   "peerDependencies": {
     "draft-js": "^0.5.0",
@@ -33,6 +34,7 @@
     "eslint-plugin-react": "^5.0.1",
     "expect": "^1.19.0",
     "flow-bin": "^0.24.2",
+    "jsdom": "^9.1.0",
     "mocha": "^2.4.5",
     "react": "^15.0.2",
     "react-dom": "^15.0.2"
