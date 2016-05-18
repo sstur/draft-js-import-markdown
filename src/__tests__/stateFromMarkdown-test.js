@@ -7,8 +7,8 @@ import {jsdom} from 'jsdom';
 
 global.document = jsdom('');
 
-describe('stateFromMarkdown', () => {
-  it('should create content state', () => {
+describe('stateFromMarkdown should create content state from', () => {
+  it('text node', () => {
     let markdown = 'Hello World';
     let contentState = stateFromMarkdown(markdown);
     let rawContentState = convertToRaw(contentState);
@@ -18,7 +18,7 @@ describe('stateFromMarkdown', () => {
     );
   });
 
-  it('should create content state from markdown link', () => {
+  it('markdown link', () => {
     let markdown = '[test](a.jpg)';
     let contentState = stateFromMarkdown(markdown);
     let rawContentState = convertToRaw(contentState);
@@ -27,7 +27,7 @@ describe('stateFromMarkdown', () => {
     expect(rawContentState.entityMap).toEqual(expectedEntitiesMap);
   });
 
-  it('should create content state from markdown code block', () => {
+  it('markdown code block', () => {
     let markdown = '`test`';
     let contentState = stateFromMarkdown(markdown);
     let rawContentState = convertToRaw(contentState);
@@ -37,7 +37,17 @@ describe('stateFromMarkdown', () => {
     );
   });
 
-  it('should create content state from markdown image', () => {
+  it('markdown bold and italic text', () => {
+    let markdown = '_**test**_';
+    let contentState = stateFromMarkdown(markdown);
+    let rawContentState = convertToRaw(contentState);
+    let blocks = removeKeys(rawContentState.blocks);
+    expect(blocks).toEqual(
+      [{text: 'test', type: 'unstyled', depth: 0, inlineStyleRanges: [{offset: 0, length: 4, style: 'ITALIC'}, {offset: 0, length: 4, style: 'BOLD'}], entityRanges: []}]
+    );
+  });
+
+  it('markdown image', () => {
     let markdown = '![test](a.jpg)';
     let contentState = stateFromMarkdown(markdown);
     let rawContentState = convertToRaw(contentState);
