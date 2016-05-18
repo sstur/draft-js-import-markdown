@@ -37,6 +37,16 @@ describe('stateFromMarkdown should create content state from', () => {
     );
   });
 
+  it('markdown blockquote', () => {
+    let markdown = '>test';
+    let contentState = stateFromMarkdown(markdown);
+    let rawContentState = convertToRaw(contentState);
+    let blocks = removeKeys(rawContentState.blocks);
+    expect(blocks).toEqual(
+      [{text: 'test', type: 'blockquote', depth: 0, inlineStyleRanges: [], entityRanges: []}]
+    );
+  });
+
   it('markdown bold and italic text', () => {
     let markdown = '_**test**_';
     let contentState = stateFromMarkdown(markdown);
