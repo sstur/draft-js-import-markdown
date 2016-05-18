@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "draft-js-import-element": "^0.1.13",
-    "jsdom": "^9.1.0",
     "remark": "^4.2.2",
     "remark-html": "^3.0.0"
   },
@@ -35,6 +34,7 @@
     "eslint-plugin-react": "^5.0.1",
     "expect": "^1.19.0",
     "flow-bin": "^0.24.2",
+    "jsdom": "^9.1.0",
     "mocha": "^2.4.5",
     "react": "^15.0.2",
     "react-dom": "^15.0.2"
