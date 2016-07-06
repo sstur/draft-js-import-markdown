@@ -17,4 +17,4 @@ This project is still under development. If you want to help out, please open an
 
 ## License
 
-This software is [BSD Licensed](/LICENSE).
+This software is [ISC Licensed](/LICENSE).
