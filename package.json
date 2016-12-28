@@ -4,7 +4,7 @@
   "description": "DraftJS: Import Markdown to ContentState",
   "main": "lib/main.js",
   "scripts": {
-    "build": "babel src --ignore \"_*\" --out-dir lib",
+    "prebuild": "babel src --ignore \"_*\" --out-dir lib",
     "lint": "eslint --max-warnings 0 .",
     "typecheck": "flow",
     "prepublish": "npm run build",

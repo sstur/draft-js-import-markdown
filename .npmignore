@@ -5,4 +5,5 @@
 .travis.yml
 _*
 flow-typed
+src
 test
