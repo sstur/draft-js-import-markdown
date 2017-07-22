@@ -601,12 +601,14 @@ function Renderer(options) {
   this.options = options || {};
 }
 
-Renderer.prototype.code = function(childNode, lang) {
+Renderer.prototype.code = function(text, lang) {
   var attributes = [];
   if (lang) {
     attributes.push({name: 'class', value: this.options.langPrefix + lang});
   }
-  var codeNode = new ElementNode('code', attributes, [childNode]);
+  var codeNode = new ElementNode('code', attributes, [
+    new TextNode(text)
+  ]);
   return new ElementNode('pre', [], [codeNode]);
 };
 
@@ -679,7 +681,8 @@ Renderer.prototype.image = function(href, title, alt) {
   if (alt) {
     attributes.push({name: 'alt', value: alt});
   }
-  return new ElementNode('img', attributes, SELF_CLOSING);
+  var imageNode = new _syntheticDom.ElementNode('img', attributes, _syntheticDom.SELF_CLOSING);
+  return new _syntheticDom.ElementNode('figure', [], [imageNode]);
 };
 
 Renderer.prototype.text = function(childNode) {
